@@ -1,0 +1,354 @@
+/* 全域視窗調整 */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+/* 全域風格設定 */
+body {
+    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    background-color: white;
+    color: black;
+}
+/* 導覽列布局 */
+.navbar {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    padding: 20px 4%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    z-index: 100;
+    transition: background-color 0.3s ease;
+}
+/* 導覽列風格 */
+.navbar.nav-color {
+    background-color: black;
+}
+/* LOGO和選單布局 */
+.nav-left {
+    display: flex;
+    align-items: center;
+}
+/* LOGO圖片風格 */
+.logo-pic {
+    width: 50px;      
+    height: 50px;    
+    margin-right: 15px; 
+    object-fit: contain; 
+}
+/* LOGO文字風格 */
+.logo {
+    color: white;
+    font-size: 2.5rem;
+    font-weight: bold;
+    margin-right: 40px;
+    cursor: pointer;
+}
+/* 按鈕風格 */
+.nav-button {
+  color: white;
+  text-decoration: none;
+  font-size: 15px;
+  border: none;
+  background: none;
+  font-weight: 600;
+  font-family: 'Poppins', sans-serif;
+}
+
+.nav-button::before {
+  margin-left: auto;
+}
+
+.nav-button::after {
+  content: '';
+  width: 0%;
+  height: 2px;
+  background: #ffffff;
+  display: block;
+  transition: 0.5s;
+}
+
+.nav-button:hover::after{
+  width: 100%;
+}
+.button-style{
+    display: flex;
+    gap: 70px; 
+    margin-left: 40px;
+}
+.dropdown {
+    position: relative;
+    display: inline-block;
+}
+
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #191A1E;
+    min-width: 140px;          
+    box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.5); 
+    border-radius: 8px;        
+    z-index: 100;              
+    margin-top: 5px;          
+}
+
+.dropdown-content a {
+    color: white;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+    font-size: 14px;
+    transition: 0.2s; 
+}
+
+.dropdown-content a:hover {
+    background-color: #333333;
+    border-radius: 8px; 
+}
+
+.dropdown:hover .dropdown-content {
+    display: block;
+}
+/* 搜尋欄 */
+.container {
+  position: absolute; 
+  right: 40px;
+  --size-button: 45px;
+  color: white;
+}
+
+.input {
+  padding-left: var(--size-button);
+  height: var(--size-button);
+  font-size: 15px;
+  border: none;
+  color: #fff;
+  outline: none;
+  width: var(--size-button);
+  transition: all ease 0.3s;
+  background-color: #191A1E;
+  box-shadow: 1.5px 1.5px 3px #0e0e0e, -1.5px -1.5px 3px rgb(95 94 94 / 25%), inset 0px 0px 0px #0e0e0e, inset 0px -0px 0px #5f5e5e;
+  border-radius: 50px;
+  cursor: pointer;
+}
+
+.input:focus,
+.input:not(:invalid) {
+  width: 320px;
+  cursor: text;
+  box-shadow: 0px 0px 0px #0e0e0e, 0px 0px 0px rgb(95 94 94 / 25%), inset 1.5px 1.5px 3px #0e0e0e, inset -1.5px -1.5px 3px #5f5e5e;
+}
+
+.input:focus + .icon,
+.input:not(:invalid) + .icon {
+  pointer-events: all;
+  cursor: pointer;
+}
+
+.container .icon {
+  position: absolute;
+  width: var(--size-button);
+  height: var(--size-button);
+  top: 0;
+  left: 0;
+  padding: 8px;
+  pointer-events: none;
+}
+
+.container .icon svg {
+  width: 100%;
+  height: 100%;
+}
+/* hover視窗調整 */
+.hero {
+    position: relative;
+    height: 100vh;
+    background-image: url('114-1.jpg'); 
+    background-size: cover;
+    background-position: center center;
+    object-fit: contain;
+}
+/* hover所有風格 */
+.hero-content {
+    position: absolute;
+    top: 35%;
+    left: 4%;
+    max-width: 500px;
+    z-index: 2;
+}
+/* 針對hover裡的標題風格 */
+.hero-title {
+    font-size: 3.8rem;
+    font-weight: 800;
+    margin-bottom: 0.5rem;
+    color: white;
+    margin-bottom: 2rem;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.45);
+    
+}
+/*hover簡介風格 */
+.hero-description {
+    font-size: 1.1rem;
+    line-height: 2;
+    margin-bottom: 1.5rem;
+    color: white;
+    font-weight: bold;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.45);
+}
+/* hero播放鍵位置 */
+.hero-button{
+    display: flex;
+    gap: 20px;
+    position: absolute; 
+    bottom: -100px;
+}
+/* hero播放鍵風格 */
+.boton-elegante-play {
+  padding: 15px 40px;
+  border: 2px solid #ffffff2e;
+  background-color: #ffffff;
+  color: #000000;
+  font-size: 1.2rem;
+  cursor: pointer;
+  border-radius: 10px;
+  transition: all 0.4s ease;
+  outline: none;
+  position: relative;
+  overflow: hidden;
+  font-weight: bold; 
+  white-space: nowrap;
+}
+
+.boton-elegante-play::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  transform: scale(0);
+  transition: transform 0.5s ease;
+}
+
+.boton-elegante-play:hover::after {
+  transform: scale(4);
+}
+
+.boton-elegante-play:hover {
+  border-color: rgba(109, 109, 110, 0.4); 
+  background: #dedede;
+}
+.boton-elegante{
+  padding: 15px 50px;
+  border: 2px solid #ffffff2e;
+  background-color: rgba(109, 109, 110, 0.7);
+  color: #ffffff;                  
+  font-size: 1.2rem;
+  cursor: pointer;
+  border-radius: 10px;
+  transition: all 0.4s ease;
+  outline: none;
+  position: relative;
+  overflow: hidden;
+  font-weight: bold;
+  white-space: nowrap;
+}
+
+.boton-elegante::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  transform: scale(0);
+  transition: transform 0.5s ease;
+}
+
+.boton-elegante-play:hover::after {
+  transform: scale(4);
+}
+
+.boton-elegante:hover {
+  border-color: transparent;
+  background: rgba(109, 109, 110, 0.4); 
+}
+/* hover底部漸變 */
+.hero-fade-bottom {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    height: 6rem;
+    background-image: linear-gradient(
+        180deg,
+        transparent,
+        rgba(37, 37, 37, 0.61),
+        #111
+    );
+}
+/* 片單列視窗調整 */
+.main-content {
+    padding: 0 4%;
+    margin-top: 50px;
+    position: relative;
+    z-index: 3;
+}
+/* 片單和片單之間間距 */
+.row {
+    margin-bottom: 2rem;
+}
+/* 片單標題風格 */
+.row h2 {
+    font-size: 2rem;
+    margin-bottom: 1rem;
+}
+.rank-icon{
+    display: flex;
+    gap: 265px;
+}
+.rank-icon img{
+    width: 200px;
+    height:70px;
+}
+/* 片單格式 */
+.row-posters {
+    display: flex;
+    padding: 20px 0;
+    gap: 95px;
+    scroll-behavior: smooth;
+    margin-bottom: 0;
+
+}
+
+/* 海報風格 */
+.poster {
+    min-width: 375px;
+    height: 210px;
+    border-radius: 4px;
+    transition: transform 450ms;
+    cursor: pointer;
+    overflow: hidden; 
+    display: block;
+    
+}
+.poster img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* 讓圖片自動裁切、填滿框框且不變形 */
+    display: block;
+}  
+/* 海報滑鼠懸停特效 */
+.poster:hover {
+    transform: scale(1.08); 
+    color: white;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.5);
+}
+.row-text{
+    display: flex;
+    padding: 5px 0 20px 0;
+    gap:265px;
+    font-weight: bold;
+}
