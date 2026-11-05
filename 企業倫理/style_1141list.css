@@ -356,84 +356,80 @@ body {
    手機版視窗調整 (螢幕寬度小於 768px 時生效)
    ========================================= */
 @media (max-width: 768px) {
-    /* 1. 解決右側白邊：強制禁止整個網頁出現橫向捲軸 */
+    /* --- 1. 全域與導覽列 --- */
     html, body {
         overflow-x: hidden;
         width: 100vw;
     }
+    .button-style { gap: 10px; margin-left: 0; }
+    .logo { font-size: 1.5rem; margin-right: 10px; }
+    .container { right: 5%; }
+    .input:focus, .input:not(:invalid) { width: 120px; }
 
-    /* 2. 主視覺區塊（Hero）調整 */
-    .hero {
-        background-position: center; /* 讓背景圖置中，避免主角被切掉 */
-    }
+    /* --- 2. 上方主視覺 (Hero) 修正文字與按鈕重疊 --- */
+    .hero { background-position: center; }
     .hero-content {
-        top: 20%;
+        top: 15%; /* 往上移，避免跟底下的按鈕撞在一起 */
         left: 5%;
         width: 90%;
     }
-    .hero-title {
-        font-size: 2.2rem;
-    }
+    .hero-title { font-size: 2rem; margin-bottom: 0.2rem; }
+    .hero-description { font-size: 0.9rem; line-height: 1.5; margin-bottom: 1rem; }
     .hero-button {
-        bottom: 20px; /* 原本的 -100px 會掉出畫面，把它拉回來 */
-        flex-direction: column; /* 手機版按鈕改成上下排列比較不擠 */
-        gap: 15px;
+        position: relative; /* 取消原本的絕對定位，讓它自然排列在文字下方 */
+        bottom: 0;
+        flex-direction: row; /* 保持左右排列 */
+        gap: 10px;
+        margin-top: 15px; /* 與上方文字保持距離 */
+    }
+    .boton-elegante-play, .boton-elegante {
+        padding: 10px 20px; /* 縮小按鈕尺寸 */
+        font-size: 1rem;
     }
 
-    /* 3. 解決海報、文字、皇冠擠壓：改成「左右滑動」的單列模式 */
+    /* --- 3. 下方片單：解決對齊與 16:9 比例 --- */
     .row-posters, .rank-icon, .row-text {
         display: flex;
-        flex-wrap: nowrap !important; /* 強制不換行 */
-        overflow-x: auto; /* 允許手指左右滑動觀看 */
-        gap: 15px; /* 縮小間距 */
+        flex-wrap: nowrap !important;
+        overflow-x: auto;
+        gap: 15px; /* 統一所有區塊的間距 */
         width: 100%;
         padding-bottom: 15px;
-        -ms-overflow-style: none;  /* 隱藏醜醜的捲軸 (IE/Edge) */
-        scrollbar-width: none;  /* 隱藏醜醜的捲軸 (Firefox) */
+        -ms-overflow-style: none;
+        scrollbar-width: none;
+        justify-content: flex-start; /* 確保從最左邊開始排 */
     }
-    
-    /* 隱藏 Chrome/Safari 的捲軸，保持美觀 */
     .row-posters::-webkit-scrollbar,
     .rank-icon::-webkit-scrollbar,
     .row-text::-webkit-scrollbar {
         display: none; 
     }
 
-    /* 4. 強制固定寬度，讓皇冠、海報、文字上下對齊且不變形 */
+    /* 設定一個統一的基準寬度 (160px) */
     .poster {
-        flex: 0 0 140px; /* 強制寬度為 140px，絕對不壓縮 */
-        min-width: 140px;
-        height: 200px;
+        flex: 0 0 160px; /* 強制寬度 */
+        width: 160px;
+        height: 90px; /* 160 : 90 = 16:9 完美比例 */
+        min-width: unset; /* 移除原本的 375px 設定 */
     }
+    
     .rank-icon img {
-        flex: 0 0 140px; /* 寬度跟海報一致才能對齊 */
+        flex: 0 0 160px; /* 寬度必須跟海報一樣，才能對齊 */
+        width: 160px;
+        height: auto; /* 高度自動，避免圖示變形 */
         object-fit: contain;
-        object-position: left center;
-    }
-    .row-text {
-        font-size: 0.9rem; /* 手機版字體縮小 */
-    }
-    /* 讓文字區塊的寬度也跟海報一樣 */
-    .row-text > div, 
-    .row-text > span, 
-    .row-text > a {
-        flex: 0 0 140px;
-        width: 140px;
+        object-position: left center; /* 讓圖示靠左對齊海報邊緣 */
     }
 
-    /* 5. 導覽列與搜尋框修正 */
-    .button-style {
-        gap: 10px;
-        margin-left: 0;
+    .row-text {
+        font-size: 0.85rem;
     }
-    .logo {
-        font-size: 1.5rem;
-        margin-right: 10px;
-    }
-    .container {
-        right: 5%; /* 避免絕對定位推破螢幕右側 */
-    }
-    .input:focus, .input:not(:invalid) {
-        width: 120px; /* 縮短展開後的搜尋框長度 */
+    
+    /* 確保文字區塊的寬度也跟海報完全一致 */
+    /* 這裡假設你的 HTML 裡，每部電影的文字是用一個 <div> 把它包起來的 */
+    .row-text > div {
+        flex: 0 0 160px; 
+        width: 160px;
+        word-wrap: break-word; /* 如果字太長，允許換行 */
     }
 }
