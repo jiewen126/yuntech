@@ -352,3 +352,60 @@ body {
     gap:265px;
     font-weight: bold;
 }
+/* =========================================
+   手機版視窗調整 (螢幕寬度小於 768px 時生效)
+   ========================================= */
+@media (max-width: 768px) {
+    
+    /* 1. 縮小 Hero 區塊的字體與間距 */
+    .hero-title {
+        font-size: 2.2rem; /* 原本是 3.8rem，手機上需縮小 */
+    }
+    .hero-description {
+        font-size: 0.9rem;
+    }
+    .hero-content {
+        top: 25%; /* 稍微往上移，避免被按鈕擋住 */
+    }
+    
+    /* 2. 調整導覽列與按鈕間距 */
+    .button-style {
+        gap: 15px; /* 原本是 70px，手機上沒有那麼多空間 */
+        margin-left: 10px;
+    }
+    .logo {
+        font-size: 1.8rem;
+        margin-right: 15px;
+    }
+
+    /* 3. 調整海報片單的寬度與間距 */
+    .row-posters {
+        gap: 20px; /* 原本是 95px */
+        padding: 10px 0;
+    }
+    .poster {
+        min-width: 150px; /* 原本是 375px，手機螢幕塞不下，改小一點 */
+        height: 225px;    /* 根據比例調整高度 */
+    }
+
+    /* 4. 調整文字與 Icon 的巨大間距 */
+    .rank-icon {
+        gap: 20px; /* 原本是 265px */
+    }
+    .row-text {
+        gap: 20px; /* 原本是 265px */
+    }
+    .rank-icon img {
+        width: 100px; /* 縮小排行榜 Icon */
+        height: auto;
+    }
+
+    /* 5. 搜尋欄調整 */
+    .container {
+        right: 10px; /* 靠右對齊一點 */
+    }
+    .input:focus,
+    .input:not(:invalid) {
+        width: 150px; /* 原本展開是 320px，手機螢幕不夠放，改短一點 */
+    }
+}
