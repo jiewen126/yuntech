@@ -1,0 +1,92 @@
+body {
+    margin: 0;
+    background-color: #111;
+    color: white;
+    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    overflow: hidden; /* 防止動畫過程中出現捲軸 */
+}
+
+#intro-screen {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: black;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 9999; 
+}
+
+.intro-container {
+    display: flex;
+    align-items: center;
+    gap: 15px;     
+    animation: holdAndZoom 3s cubic-bezier(0.5, 0, 0.1, 1) forwards; 
+}
+
+.intro-container img {
+    width: 75px; 
+    height: 75px;
+    object-fit: contain;
+}
+
+.intro-text {
+    font-size: 3.5rem;
+    font-weight: 800;
+    letter-spacing: 2px;
+    color: white; 
+}
+
+@keyframes holdAndZoom {
+    0%   { transform: scale(0.8); opacity: 0; }  /* 0秒：一開始縮小透明 */
+    33%  { transform: scale(1); opacity: 1; }    /* 第 1 秒：漸進浮現完成 */
+    66%  { transform: scale(1); opacity: 1; }    /* 第 2 秒：靜止停留結束 */
+    73%  { transform: scale(0.95); opacity: 1; } /* 稍微蓄力向後縮 */
+    100% { transform: scale(30); opacity: 0; }   /* 第 3 秒：瞬間暴衝放大並消失 */
+}
+
+#selection-screen {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    opacity: 0; 
+    animation: fadeIn 1s ease-out 2.8s forwards; 
+}
+
+@keyframes fadeIn {
+    to { opacity: 1; }
+}
+        
+.selection-logo {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    margin-bottom: 20px;
+}
+.selection-logo img { width: 75px; height: 75px; object-fit: contain; }
+.selection-logo span { font-size: 3rem; font-weight: bold; }
+
+.subtitle { margin-bottom: 30px; color: #aaa; font-size: 1.1rem; }
+.button-group { display: flex; flex-direction: column; gap: 20px; }
+.btn {
+    display: inline-block;
+    padding: 15px 50px;
+    font-size: 1.2rem;
+    font-weight: bold;
+    color: white;
+    background-color: #333;
+    text-decoration: none;
+    border-radius: 8px;
+    border: 2px solid #555;
+    text-align: center;
+    transition: 0.3s;
+}
+.btn:hover {
+    background-color: white;
+    color: black;
+    border-color: white;
+}

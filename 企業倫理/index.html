@@ -1,0 +1,41 @@
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>雲林科技大學企業倫理</title>
+    <link rel="stylesheet" href="style_index.css">
+</head>
+<body>
+
+    <!-- 開場動畫 -->
+    <div id="intro-screen">
+        <div class="intro-container">
+            <!-- 替換這裡的 src 路徑，放上你的 Logo 圖片 -->
+            <img src="NYUST.png" alt="Logo">
+            <span class="intro-text">YunFlix</span>
+        </div>
+    </div>
+
+    <!-- 選擇頁面 -->
+    <div id="selection-screen">
+        <div class="selection-logo">
+            <!-- 選單上的靜態 Logo，一樣把 src 替換掉 -->
+            <img src="NYUST.png" alt="Logo">
+            <span>YunFlix</span>
+        </div>
+        
+        <div class="button-group">
+            <a href="cindex.html" class="btn">電腦版</a>
+            <a href="mobile.html" class="btn">手機版</a>
+        </div>
+    </div>
+
+    <script>
+        // 設定 2.6 秒後，將動畫圖層完全隱藏，確保下方的按鈕可以被點擊
+        setTimeout(function() {
+            document.getElementById('intro-screen').style.display = 'none';
+        }, 2600);
+    </script>
+
+</body>
+</html>

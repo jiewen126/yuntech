@@ -1,0 +1,208 @@
+/* ==========================================
+   1. 全域視窗與基本風格設定
+   ========================================== */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    background-color: white;
+    color: black;
+}
+
+/* ==========================================
+   2. 導覽列 (Navbar)
+   ========================================== */
+.navbar {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    padding: 20px 4%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    z-index: 100;
+    transition: background-color 0.3s ease;
+}
+
+.navbar.nav-color { background-color: black; }
+.nav-left { display: flex; align-items: center; }
+.logo-pic { width: 50px; height: 50px; margin-right: 15px; object-fit: contain; }
+.logo { color: white; font-size: 2.5rem; font-weight: bold; margin-right: 40px; cursor: pointer; }
+.button-style { display: flex; gap: 70px; margin-left: 40px; }
+
+.nav-button {
+  color: white; text-decoration: none; font-size: 15px; border: none;
+  background: none; font-weight: 600; font-family: 'Poppins', sans-serif; cursor: pointer;
+}
+.nav-button::after {
+  content: ''; width: 0%; height: 2px; background: #ffffff; display: block; transition: 0.5s;
+}
+.nav-button:hover::after{ width: 100%; }
+
+.dropdown { position: relative; display: inline-block; }
+.dropdown-content {
+    display: none; position: absolute; background-color: #191A1E;
+    min-width: 140px; box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.5); border-radius: 8px; z-index: 100; margin-top: 5px;          
+}
+.dropdown-content a { color: white; padding: 12px 16px; text-decoration: none; display: block; font-size: 14px; transition: 0.2s; }
+.dropdown-content a:hover { background-color: #333333; border-radius: 8px; }
+.dropdown:hover .dropdown-content { display: block; }
+
+/* 搜尋欄 */
+.container { position: absolute; right: 40px; --size-button: 45px; color: white; }
+.input {
+  padding-left: var(--size-button); height: var(--size-button); font-size: 15px; border: none; color: #fff;
+  outline: none; width: var(--size-button); transition: all ease 0.3s; background-color: #191A1E;
+  box-shadow: 1.5px 1.5px 3px #0e0e0e, -1.5px -1.5px 3px rgb(95 94 94 / 25%), inset 0px 0px 0px #0e0e0e, inset 0px -0px 0px #5f5e5e;
+  border-radius: 50px; cursor: pointer;
+}
+.input:focus, .input:not(:invalid) {
+  width: 320px; cursor: text;
+  box-shadow: 0px 0px 0px #0e0e0e, 0px 0px 0px rgb(95 94 94 / 25%), inset 1.5px 1.5px 3px #0e0e0e, inset -1.5px -1.5px 3px #5f5e5e;
+}
+.input:focus + .icon, .input:not(:invalid) + .icon { pointer-events: all; cursor: pointer; }
+.container .icon { position: absolute; width: var(--size-button); height: var(--size-button); top: 0; left: 0; padding: 8px; pointer-events: none; }
+.container .icon svg { width: 100%; height: 100%; }
+
+/* ==========================================
+   3. 首頁英雄看板 (Hero Section)
+   ========================================== */
+.hero {
+    position: relative; height: 100vh; background-size: cover; background-position: center center; object-fit: contain;
+    box-shadow: inset 0 0 0 2000px rgba(0, 0, 0, 0.4); transition: background-image 0.5s ease-in-out; 
+}
+.hero-content { position: absolute; top: 35%; left: 4%; max-width: 500px; z-index: 2; }
+.hero-title { font-size: 3.8rem; font-weight: 800; color: white; margin-bottom: 2rem; text-shadow: 2px 2px 4px rgba(0,0,0,0.45); }
+.hero-description { font-size: 1.1rem; line-height: 2; margin-bottom: 1.5rem; color: white; font-weight: bold; text-shadow: 2px 2px 4px rgba(0,0,0,0.45); }
+
+.hero-button { display: flex; gap: 20px; position: absolute; bottom: -100px; }
+.boton-elegante-play {
+  padding: 15px 40px; border: 2px solid #ffffff2e; background-color: #ffffff; color: #000000;
+  font-size: 1.2rem; cursor: pointer; border-radius: 10px; transition: all 0.4s ease; outline: none; position: relative; overflow: hidden; font-weight: bold; white-space: nowrap;
+}
+.boton-elegante-play::after { content: ""; position: absolute; top: 0; left: 0; width: 100%; height: 100%; transform: scale(0); transition: transform 0.5s ease; }
+.boton-elegante-play:hover::after { transform: scale(4); }
+.boton-elegante-play:hover { border-color: rgba(109, 109, 110, 0.4); background: #dedede; }
+
+.boton-elegante{
+  padding: 15px 50px; border: 2px solid #ffffff2e; background-color: rgba(109, 109, 110, 0.7);
+  color: #ffffff; font-size: 1.2rem; cursor: pointer; border-radius: 10px; transition: all 0.4s ease; outline: none; position: relative; overflow: hidden; font-weight: bold; white-space: nowrap;
+}
+.boton-elegante::after { content: ""; position: absolute; top: 0; left: 0; width: 100%; height: 100%; transform: scale(0); transition: transform 0.5s ease; }
+.boton-elegante:hover::after { transform: scale(4); }
+.boton-elegante:hover { border-color: transparent; background: rgba(109, 109, 110, 0.4); }
+
+.hero-fade-bottom {
+    position: absolute; bottom: 0; width: 100%; height: 6rem; background-image: linear-gradient(180deg, transparent, rgba(37, 37, 37, 0.61), #111);
+}
+
+/* ==========================================
+   4. 片單網格與電影卡片 (Grid & Cards)
+   ========================================== */
+.main-content { padding: 0 4%; margin-top: 50px; position: relative; z-index: 3; }
+.row { margin-bottom: 2rem; }
+.row h2 { font-size: 2rem; margin-bottom: 1rem; color: black; }
+
+.netflix-row {
+    display: grid;
+    grid-template-columns: repeat(3, 375px); 
+    column-gap: 95px; 
+    row-gap: 60px;    
+    padding: 20px 0;
+    justify-content: start; 
+}
+
+/* 強制修正：卡片與皇冠排版 */
+.movie-card {
+    position: relative !important; 
+    width: 375px !important;       
+    display: flex;
+    flex-direction: column;
+}
+
+.rank-img {
+    position: absolute !important; 
+    top: -15px !important;
+    left: -15px !important;
+    width: 150px !important;       
+    z-index: 10 !important;
+    pointer-events: none;          
+}
+
+.movie-card .poster {
+    width: 100%; height: 210px; border-radius: 4px; overflow: hidden;
+    transition: transform 450ms; cursor: pointer; box-shadow: 0 4px 15px rgba(0,0,0,0.5);
+}
+.movie-card .poster:hover { transform: scale(1.08); }
+.movie-card .poster img { width: 100%; height: 100%; object-fit: cover; display: block; }
+
+/* ==========================================
+   5. 卡片底部排版 (文字與點讚按鈕)
+   ========================================== */
+.movie-bottom {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end; 
+    margin-top: 10px;
+}
+
+.movie-info {
+    font-size: 1rem; font-weight: bold; color: black; line-height: 1.6; text-align: left;
+}
+
+
+.ui-like-button {
+    display: flex; align-items: center; height: 48px; width: 136px; 
+    border-radius: 12px;             /* 稍微縮小圓角，看起來更俐落 */
+    border: 2px solid black;         /* 乾淨的黑色外框 */
+    background-color: white;         /* 融入背景的純白底 */
+    overflow: hidden;
+    cursor: pointer; padding: 0; color: black; font-family: inherit; outline: none;
+    transform: scale(0.85); transform-origin: bottom right; margin-bottom: 5px;
+    transition: transform 0.2s, box-shadow 0.2s; /* 增加滑鼠懸停的滑順感 */
+}
+
+.ui-like-button:hover {
+    transform: scale(0.9);           /* 滑鼠游標移過去時，按鈕會微幅放大 */
+    box-shadow: 0 4px 10px rgba(0,0,0,0.08); /* 加上一點柔和的陰影 */
+}
+
+.like-left {
+    display: flex; align-items: center; justify-content: center; gap: 8px; width: 65%; height: 100%;
+    background-color: transparent; transition: background-color 0.2s;
+}
+
+.ui-like-button:active .like-left { 
+    background-color: #f0f0f0;       /* 點擊瞬間的微灰色回饋 */
+}
+
+.heart-icon {
+    width: 18px; height: 18px; fill: #bbb; /* 預設改為乾淨的淺灰愛心 */
+    transition: fill 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275), transform 0.3s;
+}
+
+.like-left span { font-size: 14px; font-weight: bold; color: black; }
+
+.like-right {
+    display: flex; align-items: center; justify-content: center; width: 35%; height: 100%;
+    background-color: #fafafa;       /* 右邊數字區塊帶一點點極淺灰，增加層次感 */
+    border-left: 2px solid black;    /* 中間分隔的黑色實線 */
+}
+
+.like-count { font-size: 15px; color: #555; font-weight: bold; }
+
+/* ==========================================
+   點擊後的變化狀態 (.liked)
+   ========================================== */
+.ui-like-button.liked .heart-icon { 
+    fill: #ff2a5f;           /* 點讚後變成飽滿的亮紅色 */
+    transform: scale(1.3);   /* Q彈放大 */
+}
+
+.ui-like-button.liked .like-count { 
+    color: #ff2a5f;          /* 數字也同步變成紅色，視覺回饋更強烈 */
+}

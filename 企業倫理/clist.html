@@ -1,0 +1,64 @@
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>雲林科技大學企業倫理</title>
+    <link rel="stylesheet" href="style_clist.css">
+</head>
+<body>
+    <nav id="navbar" class="navbar nav-color">
+        <div class="nav-left">
+            <img src="NYUST.png" class="logo-pic">
+            <h1 class="logo">YunFlix</h1>
+            <div class="button-style">
+                <a href="cindex.html" class="nav-button">首頁</a>
+                <div class="dropdown">
+                    <button class="nav-button">學期選擇</button>
+                    <div class="dropdown-content">
+                        <a href="clist.html?semester=114-2">114-2 學期</a>
+                        <a href="clist.html?semester=114-1">114-1 學期</a>
+                    </div>
+                </div>
+            </div>
+            <div class="container">
+                <input type="text" id="search-input" name="text" class="input" required="" placeholder="學期編號、學生姓名、老師">
+                <div class="icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="ionicon" viewBox="0 0 512 512">
+                    <title>Search</title>
+                    <path d="M221.09 64a157.09 157.09 0 10157.09 157.09A157.1 157.1 0 00221.09 64z" fill="none" stroke="currentColor" stroke-miterlimit="10" stroke-width="32"></path>
+                    <path fill="none" stroke="currentColor" stroke-linecap="round" stroke-miterlimit="10" stroke-width="32" d="M338.29 338.29L448 448"></path>
+                    </svg>
+                </div>
+            </div>
+        </div>
+    </nav>
+    
+    <header id="hero-section" class="hero">
+        <div class="hero-content">
+            <h2 id="hero-title" class="hero-title">載入中...</h2>
+            <p class="hero-description">
+                <span id="hero-semester-text"></span>學期 精選作品
+                <br>學生姓名: <span id="hero-student"></span>
+                <br>指導老師: <span id="hero-teacher"></span>
+            </p>
+            <div class="hero-button">        
+                <button id="hero-play-btn" class="boton-elegante-play">播放 ▶</button>
+                <button class="boton-elegante">瀏覽其他作品 ▼</button>
+            </div>
+        </div>
+        <div class="hero-fade-bottom"></div>
+    </header>
+
+    <main class="main-content">
+        <div class="row">
+        <h2><span id="row-semester-text">114-1</span> 微電影</h2> 
+    
+        <div id="movie-list" class="netflix-row"></div>
+    </div>
+    </main>
+
+    <script src="script_clist.js"></script>
+</body>
+</html>
+</body>
+</html>
